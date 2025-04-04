@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter, Poppins } from 'next/font/google'
 import "@/styles/main.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ChildrenProps } from "@/types"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,11 +22,7 @@ export const metadata: Metadata = {
   description: "Your all-in-one platform for language learning with dictionary, translator, and personalized vocabulary journal.",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: Readonly<ChildrenProps>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
