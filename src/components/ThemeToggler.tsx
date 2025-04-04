@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { MoonIcon, SunIcon } from "lucide-react"
 import { motion } from "framer-motion"
 
-export default function ThemeToggle() {
+export function ThemeToggle() {
     const { theme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
 

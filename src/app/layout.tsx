@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import { Inter, Poppins } from 'next/font/google'
 import "@/styles/main.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import { ChildrenProps } from "@/types"
+import { Navbar, ThemeProviderWrapper } from "@/components"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,14 +26,15 @@ export default function RootLayout({ children }: Readonly<ChildrenProps>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-        <ThemeProvider
+        <ThemeProviderWrapper
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
-        </ThemeProvider>
+        </ThemeProviderWrapper>
       </body>
     </html>
   )

@@ -10,8 +10,7 @@ interface FeatureCardProps {
     icon: string
 }
 
-export default function FeatureCard({ title, description, icon }: FeatureCardProps) {
-    // Dynamically get the icon from lucide-react
+export function FeatureCard({ title, description, icon }: FeatureCardProps) {
     const Icon = LucideIcons[icon as keyof typeof LucideIcons] as LucideIcon
 
     return (

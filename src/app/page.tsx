@@ -1,57 +1,13 @@
 "use client"
 
-import Link from "next/link"
-import FeatureCard from "@/components/feature-card"
-import ThemeToggle from "@/components/theme-toggle"
-import Logo from "@/components/logo"
-import HeroSection from "@/components/hero-section"
-import { Button } from "@/components/ui/button"
+import { featuresList, wordList } from "@/data/HomeData"
+import { HeroSection, FeatureCard, Button, Footer } from "@/components"
 import { motion } from "framer-motion"
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-          <div className="flex gap-6 md:gap-10">
-            <Link href="/" className="flex items-center space-x-2">
-              <Logo />
-              <span className="inline-block font-bold text-xl">voLang</span>
-            </Link>
-            <nav className="hidden md:flex gap-6">
-              <Link
-                href="#features"
-                className="flex items-center text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                Features
-              </Link>
-              <Link
-                href="#journal"
-                className="flex items-center text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                Journal
-              </Link>
-              <Link
-                href="#translator"
-                className="flex items-center text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                Translator
-              </Link>
-            </nav>
-          </div>
-          <div className="flex flex-1 items-center justify-end space-x-4">
-            <nav className="flex items-center space-x-2">
-              <ThemeToggle />
-              <Button variant="ghost" size="sm" className="hidden md:flex">
-                Sign In
-              </Button>
-              <Button size="sm" className="hidden md:flex">
-                Get Started
-              </Button>
-            </nav>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#f9f6f0] to-[#f5f1e8] dark:from-background dark:to-background">
+
       <main className="flex-1">
         <HeroSection />
 
@@ -66,36 +22,14 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FeatureCard
-              title="Dictionary"
-              description="Comprehensive dictionary with definitions, pronunciations, and example sentences."
-              icon="book-open"
-            />
-            <FeatureCard
-              title="Synonyms & Antonyms"
-              description="Explore related words to expand your vocabulary and understanding."
-              icon="repeat"
-            />
-            <FeatureCard
-              title="Context-Based Meaning"
-              description="Understand how words are used in different contexts and situations."
-              icon="layers"
-            />
-            <FeatureCard
-              title="Translator"
-              description="Translate text between multiple languages with high accuracy."
-              icon="globe"
-            />
-            <FeatureCard
-              title="Vocabulary Journal"
-              description="Save difficult words and create your personalized learning journal."
-              icon="book"
-            />
-            <FeatureCard
-              title="Flashcards"
-              description="Practice with customized flashcards to reinforce your learning."
-              icon="square-stack"
-            />
+            {featuresList.map((feature) => (
+              <FeatureCard
+                key={feature.title}
+                title={feature.title}
+                description={feature.description}
+                icon={feature.icon}
+              />
+            ))}
           </div>
         </section>
 
@@ -123,9 +57,9 @@ export default function Home() {
                   <span>Track your learning progress</span>
                 </li>
               </ul>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+              <div>
                 <Button className="mt-4 shadow-neumorphic dark:shadow-neumorphic-dark">Start Your Journal</Button>
-              </motion.div>
+              </div>
             </div>
             <motion.div
               className="rounded-xl overflow-hidden shadow-neumorphic dark:shadow-neumorphic-dark"
@@ -138,30 +72,17 @@ export default function Home() {
                 <div className="w-full max-w-md space-y-4 p-6 rounded-lg bg-card dark:bg-card/80 shadow-neumorphic dark:shadow-neumorphic-dark">
                   <h3 className="text-xl font-semibold font-heading">My Vocabulary Journal</h3>
                   <div className="space-y-3">
-                    <motion.div
-                      className="p-3 rounded-md bg-background dark:bg-background/40 shadow-neumorphic-inset dark:shadow-neumorphic-inset-dark flex justify-between items-center"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <span className="font-medium">ephemeral</span>
-                      <span className="text-sm text-muted-foreground">lasting for a very short time</span>
-                    </motion.div>
-                    <motion.div
-                      className="p-3 rounded-md bg-background dark:bg-background/40 shadow-neumorphic-inset dark:shadow-neumorphic-inset-dark flex justify-between items-center"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <span className="font-medium">serendipity</span>
-                      <span className="text-sm text-muted-foreground">finding something good by chance</span>
-                    </motion.div>
-                    <motion.div
-                      className="p-3 rounded-md bg-background dark:bg-background/40 shadow-neumorphic-inset dark:shadow-neumorphic-inset-dark flex justify-between items-center"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <span className="font-medium">ubiquitous</span>
-                      <span className="text-sm text-muted-foreground">present everywhere</span>
-                    </motion.div>
+                    {wordList.map((word) => (
+                      <motion.div
+                        key={word.word}
+                        className="p-3 rounded-md bg-background dark:bg-background/40 shadow-neumorphic-inset dark:shadow-neumorphic-inset-dark flex justify-between items-center"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <span className="font-medium">{word.word}</span>
+                        <span className="text-sm text-muted-foreground">{word.meaning}</span>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -260,27 +181,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="border-t py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-            <Logo />
-            <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-              &copy; {new Date().getFullYear()} voLang. All rights reserved.
-            </p>
-          </div>
-          <div className="flex gap-4">
-            <Link href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-              Terms
-            </Link>
-            <Link href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-              Privacy
-            </Link>
-            <Link href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-              Contact
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

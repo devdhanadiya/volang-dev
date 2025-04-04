@@ -2,11 +2,10 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Input, Button } from "@/components"
 import { Search } from "lucide-react"
 
-export default function HeroSection() {
+export function HeroSection() {
     const [searchTerm, setSearchTerm] = useState("")
 
     return (

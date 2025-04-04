@@ -20,8 +20,8 @@ const config = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['var(--font-inter)', 'sans-serif'],
-				heading: ['var(--font-poppins)', 'sans-serif'],
+				sans: ["var(--font-inter)", "sans-serif"],
+				heading: ["var(--font-poppins)", "sans-serif"],
 			},
 			colors: {
 				border: "hsl(var(--border))",
@@ -57,6 +57,17 @@ const config = {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))",
 				},
+				beige: {
+					50: '#f9f6f0',
+					100: '#f5f1e8',
+					200: '#eee6d8',
+					300: '#e5d9c1',
+					400: '#d9c8a3',
+					500: '#c9b283',
+				},
+			},
+			backgroundImage: {
+				'soft-beige': 'linear-gradient(to bottom, #f9f6f0, #f5f1e8)',
 			},
 			borderRadius: {
 				lg: "var(--radius)",
@@ -83,3 +94,4 @@ const config = {
 } satisfies Config
 
 export default config
+
