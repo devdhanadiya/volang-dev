@@ -3,6 +3,7 @@ import { Inter, Poppins } from 'next/font/google'
 import "@/styles/main.css"
 import { ChildrenProps } from "@/types"
 import { ThemeProviderWrapper, SessionProviderWrapper } from "@/components"
+import { auth } from "@/auth"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,11 +23,12 @@ export const metadata: Metadata = {
   description: "Your all-in-one platform for language learning with dictionary, translator, and personalized vocabulary journal.",
 }
 
-export default function RootLayout({ children }: Readonly<ChildrenProps>) {
+export default async function RootLayout({ children }: Readonly<ChildrenProps>) {
+  const session = await auth();
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-        <SessionProviderWrapper>
+        <SessionProviderWrapper session={session}>
           <ThemeProviderWrapper
             attribute="class"
             defaultTheme="system"
