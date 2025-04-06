@@ -13,7 +13,6 @@ const files = fg.sync(["**/*.tsx", "**/*.ts"], {
 const exports = files
     .map((filePath) => {
         const extless = filePath.replace(/\.(tsx|ts)$/, "");
-        const name = path.basename(extless);
         return `export * from "./${extless}";`;
     })
     .join("\n") + "\n";
